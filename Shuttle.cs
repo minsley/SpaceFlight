@@ -47,11 +47,6 @@ namespace MyGame
 
 			Angle += AngularVelocity;
 
-			EnginePosition = new Vector2 (
-				Position.X - (float)Math.Cos(Angle) * Texture.Width / 2,
-				Position.Y - (float)Math.Sin(Angle) * Texture.Height / 2
-			);
-
 			Vector2 modelVelocityAdd = Vector2.Zero;
 
 			modelVelocityAdd.X = (float) Math.Sin( Angle );
@@ -69,6 +64,11 @@ namespace MyGame
 			}
 
 			Position += Velocity;
+
+			EnginePosition = new Vector2 (
+				Position.X - (float)Math.Cos(Angle - Math.PI/2) * Texture.Height / 2,
+				Position.Y - (float)Math.Sin(Angle - Math.PI/2) * Texture.Height / 2
+			);
 
 			particleEngine.EmitterLocation = EnginePosition;
 			particleEngine.Update();
@@ -108,17 +108,20 @@ namespace MyGame
 			);
 			float angle = 0;
 			float angularVelocity = 0.1f * (float) (random.NextDouble() * 2 - 1);
-			Vector2 size = new Vector2(2,2);
+			Vector2 size = new Vector2(0.4f,0.4f);
 			int ttl = 20 + random.Next( 40 );
 
-			return new Particle (texture, position, velocity, angle, angularVelocity, Color.White, size, 0.3f, ttl);
+			return new Particle (texture, position, velocity, angle, angularVelocity, Color.White, size, 0.95f, ttl);
 		}
 
 		public void Update()
 		{
-			for (int i = 0; i < Count; i++)
+			if (Keyboard.GetState().IsKeyDown( Keys.W ))
 			{
-				particles.Add( GenerateNewParticle() );
+				for (int i = 0; i < Count; i++)
+				{
+					particles.Add( GenerateNewParticle() );
+				}
 			}
 
 			for (int j = 0; j < particles.Count; j++)

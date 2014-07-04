@@ -81,7 +81,9 @@
     <None Include="Info.plist" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
+    <Compile Include="Game1.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Particle.cs" />
@@ -94,6 +96,12 @@
     <Content Include="Assets\shuttle.png" />
     <Content Include="Assets\stars.jpg" />
     <Content Include="Assets\Kootenay.spritefont" />
+    <Content Include="Assets\GameFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\JetExhaustParticle2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Assets\JetExhaustParticle.png" />
