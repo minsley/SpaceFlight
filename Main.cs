@@ -6,7 +6,7 @@ using System.Linq;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
 
-namespace MyGame
+namespace SpriteFlight
 {
 	static class Program
 	{
